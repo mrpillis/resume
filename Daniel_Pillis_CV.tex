@@ -1,0 +1,149 @@
+\documentclass[letterpaper,10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+\usepackage[margin=0.7in,top=0.55in,bottom=0.6in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tabularx}
+\usepackage{needspace}
+
+\definecolor{linkblue}{RGB}{0,0,160}
+\newcommand{\lnk}[2]{\href{#1}{\textcolor{linkblue}{#2}}}
+\pagestyle{plain}
+\setlength{\parindent}{0pt}
+\raggedright
+
+\titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\vspace{-0.6em}\rule{\textwidth}{0.6pt}]
+\titlespacing{\section}{0pt}{8pt}{4pt}
+
+\setlist[itemize]{leftmargin=0.9em,label={\small$\bullet$},itemsep=5pt,topsep=2pt,parsep=0pt}
+
+% \entry{Org}{Dates}{Role}{Location}{one line}
+\newcommand{\entry}[5]{%
+  \item \begin{tabularx}{\dimexpr\textwidth-0.9em}[t]{@{}X r@{}}
+    \textbf{#1} & \textit{\small #2}\\[-1pt]
+    \textit{\small #3} & \small #4
+  \end{tabularx}\\[1pt]
+  \small$\circ$\ \normalsize #5}
+
+% \pub{Title}{Venue}{Description}{Authors}
+\newcommand{\pub}[4]{%
+  \needspace{4\baselineskip}\item \textbf{#1} \textit{#2}\\
+  #3\\
+  {\small #4}}
+
+\begin{document}
+
+\begin{center}
+  {\Huge\bfseries Daniel Pillis}\\[5pt]
+  {\small (908) 902-9559 \ $|$ \ \lnk{mailto:pillis@mit.edu}{pillis@mit.edu} \ $|$ \ \lnk{https://dpillis.com}{https://dpillis.com} \ $|$ \ \lnk{https://www.linkedin.com/in/pillis/}{LinkedIn}}\\[3pt]
+  {\small Boston, MA, U.S.}
+\end{center}
+\vspace{-2pt}
+Researcher in human/AI interaction, robotics, and XR, building generative, embodied, and immersive systems.
+
+\section{Experience}
+\begin{itemize}
+\entry{Emerson College}{May 2024 - now}{Assistant Professor of Virtual Production \& Generative AI}{Boston, MA}
+  {Lead real-time generative virtual production R\&D on a 1.9mm-pitch LED volume for 100+ daily users.}
+\entry{MIT Media Lab}{Mar 2022 - Aug 2024}{Research Associate, Tangible Media Group}{Cambridge, MA}
+  {Co-led TeleAbsence (\$40K+): Gaussian-splat digital twins, soft-robotic interfaces, multimodal 3D dataset.}
+\entry{Academy Software Foundation}{2023}{Graduate Intern, Virtual Production}{Los Angeles, CA}
+  {Built a mocap-driven Three.js simulation with GPT-3 narrative generation, advised by ILM; published at IUI.}
+\entry{MIT DesignX}{2022}{Startup Founder, SoftDesk}{Cambridge, MA}
+  {Raised \$10K seed; led a 4-person team building pneumatic soft-robotic multisensory interfaces.}
+\entry{Princeton University}{May 2020 - Mar 2021}{Associate Professional Specialist}{Princeton, NJ}
+  {Built a networked multi-user Unity twin of the Princeton Art Museum for real-time remote co-presence.}
+\entry{Virginia Tech, Institute for Creativity, Arts \& Technology}{May 2018 - May 2020}{Research Assistant Professor in Immersive Environments}{Blacksburg, VA}
+  {Project lead for The Cube, a \$15M VR lab with 150-channel spatial audio and 32-camera Qualisys mocap.}
+\entry{University of Maine, Innovation Media Research Center}{2018}{Researcher-in-Residence}{Orono, ME}
+  {Built ARKit/Unity AR prototypes and SoftBank NAO robotics installations; advised on a new VR lab.}
+\entry{Carnegie Mellon University, The Robotics Institute}{May 2016 - May 2018}{Research Associate, Atkeson Lab}{Pittsburgh, PA}
+  {Built VR tools to design and simulate robot behaviors; digitized a historic robot collection into a 3D dataset.}
+\entry{Carnegie Mellon University, Posner Center}{2015 - 2016}{Curatorial Fellow}{Pittsburgh, PA}
+  {With Ivan Sutherland, built an interactive VR reconstruction of the first head-mounted display.}
+\entry{Carnegie Mellon University, School of Art \& School of Computer Science}{2013 - 2016}{Graduate Research Assistant}{Pittsburgh, PA}
+  {Taught mocap capture, rigging, and retargeting plus physically based cloth, fluid, and dynamics simulation.}
+\end{itemize}
+
+\section{Education}
+\begin{itemize}
+\entry{Massachusetts Institute of Technology}{Mar 2022 - Sep 2024}{S.M. in Media Arts \& Sciences, MIT Media Lab}{Cambridge, MA}
+  {Thesis: \textit{Temporal Telepresence: Immersive Interfaces for TeleAbsence.} Advisors: Hiroshi Ishii, Pattie Maes.}
+\entry{Carnegie Mellon University}{}{M.F.A., Virtual Reality \& Robotics}{Pittsburgh, PA}
+  {Thesis: \textit{The Hidden Line Problem.} Advisors: Ivan Sutherland, Jessica Hodgins, Chris Atkeson.}
+\entry{Rutgers University}{}{B.A. in Cognitive Science, Visual Art}{New Brunswick, NJ}
+  {Cognitive science, visual art, and literature.}
+\end{itemize}
+
+\needspace{8\baselineskip}
+\section{Research \& Publications}
+\begin{itemize}
+\pub{Humanoids at Home: Autobiographical Semantic Maps for Humanoid Motion from Memory in a Reconstructed Domestic Environment.}{IROS'26 SeMaNa Workshop, \textbf{Best Workshop Paper Award}}
+  {Autobiographical semantic maps that drive humanoid motion from memory in a reconstructed home.}
+  {\textbf{D. Pillis}}
+\pub{Robot Cinematography: A Boston Dynamics Spot Quadruped as a Generative Virtual Production Camera Platform.}{In RSS'26}
+  {A quadruped robot as a mobile camera platform for generative virtual production.}
+  {\textbf{D. Pillis}}
+\pub{The Memory Machine: Immersive Reconstruction of Autobiographical Memory using Gaussian Splatting, World Models, and Interactive Agents.}{In ISMAR'26}
+  {Gaussian splatting, world models, and agents to reconstruct personal memory spaces.}
+  {\textbf{D. Pillis} et al.}
+\pub{Perceive More by Seeing Less: Immersive Vision Augmentation Systems to Support Vision Rehabilitation.}{In ISMAR'26}
+  {Real-time spatial-frequency filtering of mixed-reality passthrough (Varjo XR-3) for vision rehabilitation.}
+  {C. Pierce, \textbf{D. Pillis}, P. Sinha, J. Skerswetat, S. Riskin, K. Zolot}
+\pub{Multisensory Spatial Memory: A Large-Scale, Synchronized Multi-Sensory Dataset of Embodied Interaction with Reconstructed Autobiographical Spaces.}{CVPR'26 Sense of Space Workshop}
+  {A large-scale synchronized multisensory dataset of embodied interaction in reconstructed spaces.}
+  {\textbf{D. Pillis} et al.}
+\pub{Towards Performing Robotics: AI Theatre \& Social Robots for Theatrical Virtual Production.}{In ICSR + ART'26}
+  {Social robots and AI theatre integrated into live virtual production.}
+  {\textbf{D. Pillis}, T. Chiaravalloti, J. Ferguson}
+\pub{Towards Temporal Telepresence \& Multisensory Spatial Intelligence: Reconstructing the Human Experience through TeleAbsence.}{IEEE VR'26 Workshop on Memory}
+  {Multisensory spatial reconstruction as a path to telepresence across time.}
+  {\textbf{D. Pillis}}
+\pub{TeleAbsence: Visions of Afterlife Telepresence.}{Presence Journal, MIT Press, 2025}
+  {Telepresence with absent and departed loved ones through memory-driven interfaces.}
+  {H. Ishii, \textbf{D. Pillis}*, P. Pataranutaporn*, X. Xiao, A. Algargoosh, L. Li, J.-B. Labrune}
+\pub{Real-time Stable Diffusion for Virtual Production: Room-scale Generative AI towards the Ultimate Display.}{MIT GenAI for Design Workshop'25, \textbf{Best Presentation}}
+  {Room-scale, real-time Stable Diffusion on an LED volume via TouchDesigner and Disguise.}
+  {\textbf{D. Pillis}, P. Cerner, M. Sawtell}
+\pub{Return of the Jibo: Generative AI \& Social Robots for Virtual Production Education.}{MIT AI \& Education Conference'25}
+  {Generative AI-driven social robots as teaching tools for virtual production.}
+  {\textbf{D. Pillis}, J. Ferguson}
+\pub{AI Comes Out of the Closet: Using AI-Generated Virtual Characters to Help Individuals Practice LGBTQIA+ Advocacy.}{In IUI'24}
+  {LLM-driven, motion-captured virtual characters for practicing advocacy conversations.}
+  {\textbf{D. Pillis}*, P. Pataranutaporn*, P. Maes, M. Sra}
+\pub{AI Theatre: Interactive Conversational Interfaces with Virtual Agents Can Increase Confidence and Self-Efficacy in Devising Solutions for Interpersonal Conflict Scenarios.}{Under review}
+  {Conversational virtual agents increase confidence and self-efficacy in conflict resolution.}
+  {\textbf{D. Pillis}*, P. Pataranutaporn*, P. Maes, M. Sra}
+\pub{Human--Material Interaction for Expression, Performance, and Remembering.}{CHI'23 Workshop}
+  {Workshop on materials as interfaces for expression, performance, and memory.}
+  {H. Ishii, O. Kilic Afsar, W. Babatain, C. Fang, J. Forman, S. Nicita, \textbf{D. Pillis}, L. Yang, J.-B. Labrune}
+\end{itemize}
+{\small * Equal contribution}
+
+\section{Skills}
+\begin{itemize}[itemsep=2pt]
+\item \textbf{Programming Languages:} Python, C/C++, C\#, HLSL, JavaScript, MEL
+\item \textbf{AI \& Graphics:} OpenAI API, Stable Diffusion, Gaussian Splatting / NeRF, USD, OpenGL, Three.js
+\item \textbf{Engines \& Tools:} Unreal, Unity, TouchDesigner, Disguise, Maya, Blender, ZBrush, Perforce
+\item \textbf{Hardware:} Boston Dynamics Spot, Varjo XR-3, Apple Vision Pro, Quest 1--3, HoloLens, Magic Leap, Meta Project Aria, Azure Kinect, Qualisys / Motive mocap, Arduino, EEG
+\end{itemize}
+
+\section{Services}
+\begin{itemize}[itemsep=2pt]
+\item \textbf{Committee:} ACM SIGGRAPH Diversity \& Inclusion Committee (2018--2025)
+\item \textbf{Teaching:} AI Filmmaking, Virtual Production (Emerson); MAS.834 Tangible Interfaces, MAS.S61 Metaverse (MIT); Engineering Transformations (Princeton); UH 3004 Immersive Virtual Environments (Virginia Tech)
+\item \textbf{Invited Talks:}
+  \begin{itemize}[label={\small$\circ$},itemsep=1pt,topsep=1pt]
+  \item (2025) IEEE VR, St Malo, France
+  \item (2025) HubSpot: ``AI Comes Out of the Closet''
+  \item (2025) SIGGRAPH Sparks Talk; MIT AI Film Hackathon panel with Alvin Wang Graylin
+  \item (2024) SIGGRAPH Village Talks; MIT Media Lab
+  \item (2023) SIGGRAPH, Los Angeles; Harvard AR/VR Hackathon
+  \item (2017) IROS Workshop: ``Towards an Artist in the Lab Framework''
+  \end{itemize}
+\end{itemize}
+
+\end{document}
