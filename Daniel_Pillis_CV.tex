@@ -1,149 +1,349 @@
-\documentclass[letterpaper,10pt]{article}
+\documentclass[10pt,letterpaper]{article}
 \usepackage[T1]{fontenc}
-\usepackage{mathpazo}
-\usepackage[margin=0.7in,top=0.55in,bottom=0.6in]{geometry}
-\usepackage{titlesec}
+\usepackage[utf8]{inputenc}
+\usepackage{charter}
+\usepackage{textcomp}
+\usepackage[letterspace=60]{microtype}
+\usepackage[margin=0.5in]{geometry}
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage[hidelinks]{hyperref}
-\usepackage{tabularx}
-\usepackage{needspace}
-
-\definecolor{linkblue}{RGB}{0,0,160}
-\newcommand{\lnk}[2]{\href{#1}{\textcolor{linkblue}{#2}}}
-\pagestyle{plain}
+\definecolor{link}{HTML}{4A6FA5}
+\pagestyle{empty}
 \setlength{\parindent}{0pt}
-\raggedright
+\setlength{\parskip}{0pt}
+\raggedbottom
+\linespread{1.0}
+\emergencystretch=2em
 
-\titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\vspace{-0.6em}\rule{\textwidth}{0.6pt}]
-\titlespacing{\section}{0pt}{8pt}{4pt}
+% ---------- section headings ----------
+\newcommand{\cvsection}[1]{%
+  \par\addvspace{7pt}%
+  {\large\bfseries\MakeUppercase{#1}}\par\nobreak
+  \vspace{-0.55\baselineskip}\rule{\linewidth}{0.6pt}\par\nobreak\vspace{1.5pt}}
+\newcommand{\cvsub}[1]{%
+  \par\addvspace{5pt}{\bfseries\textls{\MakeUppercase{#1}}}\par\nobreak\vspace{1.5pt}}
 
-\setlist[itemize]{leftmargin=0.9em,label={\small$\bullet$},itemsep=5pt,topsep=2pt,parsep=0pt}
+% ---------- org / role entries ----------
+\newcommand{\entry}[4]{% org, location, role, dates
+  \par\addvspace{2.5pt}%
+  {\large\bfseries #1}\hfill #2\par\nobreak
+  \textit{#3}\hfill #4\par\nobreak}
+\newcommand{\mentor}[1]{\textit{#1}\par\nobreak}
+\newenvironment{bullets}{%
+  \begin{itemize}[leftmargin=0.95em,labelsep=0.35em,itemsep=0pt,parsep=0pt,topsep=1pt,partopsep=0pt,
+    label={\raisebox{0.25ex}{\tiny$\bullet$}}]}{\end{itemize}}
 
-% \entry{Org}{Dates}{Role}{Location}{one line}
-\newcommand{\entry}[5]{%
-  \item \begin{tabularx}{\dimexpr\textwidth-0.9em}[t]{@{}X r@{}}
-    \textbf{#1} & \textit{\small #2}\\[-1pt]
-    \textit{\small #3} & \small #4
-  \end{tabularx}\\[1pt]
-  \small$\circ$\ \normalsize #5}
+% ---------- one-line items with year at right ----------
+\newlength{\yw}\setlength{\yw}{0.78in}
+\newcommand{\yitem}[2]{%
+  \par\noindent\parbox[t]{\dimexpr\linewidth-\yw}{\raggedright\hangindent=1.6em\hangafter=1 #1\strut}%
+  \hfill #2\par}
+\newcommand{\pitem}[1]{\par\noindent{\raggedright\hangindent=1.6em\hangafter=1 #1\par}}
 
-% \pub{Title}{Venue}{Description}{Authors}
-\newcommand{\pub}[4]{%
-  \needspace{4\baselineskip}\item \textbf{#1} \textit{#2}\\
-  #3\\
-  {\small #4}}
+% ---------- publications ----------
+\newenvironment{pubs}{%
+  \begin{itemize}[leftmargin=2.6em,labelwidth=2.3em,labelsep=0.3em,align=left,itemsep=0pt,parsep=0pt,topsep=0pt]}{\end{itemize}}
+\newcommand{\pub}[1]{\item[\textbf{[#1]}]}
+\newcommand{\me}{\textbf{D. Pillis}}
 
 \begin{document}
 
 \begin{center}
-  {\Huge\bfseries Daniel Pillis}\\[5pt]
-  {\small (908) 902-9559 \ $|$ \ \lnk{mailto:pillis@mit.edu}{pillis@mit.edu} \ $|$ \ \lnk{https://dpillis.com}{https://dpillis.com} \ $|$ \ \lnk{https://www.linkedin.com/in/pillis/}{LinkedIn}}\\[3pt]
-  {\small Boston, MA, U.S.}
+  {\LARGE\bfseries\textls[80]{DANIEL PILLIS}}\\[3pt]
+  {\color{link}\href{mailto:pillis@media.mit.edu}{pillis@media.mit.edu}
+  \textcolor{black}{\,|\,} \href{https://dpillis.com}{dpillis.com}
+  \textcolor{black}{\,|\,} \href{https://www.linkedin.com/in/pillis/}{linkedin.com/in/pillis}}
 \end{center}
-\vspace{-2pt}
-Researcher in human/AI interaction, robotics, and XR, building generative, embodied, and immersive systems.
+\vspace{-6pt}
 
-\section{Experience}
-\begin{itemize}
-\entry{Emerson College}{May 2024 - now}{Assistant Professor of Virtual Production \& Generative AI}{Boston, MA}
-  {Lead real-time generative virtual production R\&D on a 1.9mm-pitch LED volume for 100+ daily users.}
-\entry{MIT Media Lab}{Mar 2022 - Aug 2024}{Research Associate, Tangible Media Group}{Cambridge, MA}
-  {Co-led TeleAbsence (\$40K+): Gaussian-splat digital twins, soft-robotic interfaces, multimodal 3D dataset.}
-\entry{Academy Software Foundation}{2023}{Graduate Intern, Virtual Production}{Los Angeles, CA}
-  {Built a mocap-driven Three.js simulation with GPT-3 narrative generation, advised by ILM; published at IUI.}
-\entry{MIT DesignX}{2022}{Startup Founder, SoftDesk}{Cambridge, MA}
-  {Raised \$10K seed; led a 4-person team building pneumatic soft-robotic multisensory interfaces.}
-\entry{Princeton University}{May 2020 - Mar 2021}{Associate Professional Specialist}{Princeton, NJ}
-  {Built a networked multi-user Unity twin of the Princeton Art Museum for real-time remote co-presence.}
-\entry{Virginia Tech, Institute for Creativity, Arts \& Technology}{May 2018 - May 2020}{Research Assistant Professor in Immersive Environments}{Blacksburg, VA}
-  {Project lead for The Cube, a \$15M VR lab with 150-channel spatial audio and 32-camera Qualisys mocap.}
-\entry{University of Maine, Innovation Media Research Center}{2018}{Researcher-in-Residence}{Orono, ME}
-  {Built ARKit/Unity AR prototypes and SoftBank NAO robotics installations; advised on a new VR lab.}
-\entry{Carnegie Mellon University, The Robotics Institute}{May 2016 - May 2018}{Research Associate, Atkeson Lab}{Pittsburgh, PA}
-  {Built VR tools to design and simulate robot behaviors; digitized a historic robot collection into a 3D dataset.}
-\entry{Carnegie Mellon University, Posner Center}{2015 - 2016}{Curatorial Fellow}{Pittsburgh, PA}
-  {With Ivan Sutherland, built an interactive VR reconstruction of the first head-mounted display.}
-\entry{Carnegie Mellon University, School of Art \& School of Computer Science}{2013 - 2016}{Graduate Research Assistant}{Pittsburgh, PA}
-  {Taught mocap capture, rigging, and retargeting plus physically based cloth, fluid, and dynamics simulation.}
-\end{itemize}
+\cvsection{Research Interests}
+Hello! I am an interdisciplinary researcher and computer scientist. Innovative Technical Artist and Interaction
+Designer with years of experience in software engineering, research in XR production, and interactive/immersive
+media for virtual storytelling. A proven track record as a leader and collaborator in complex, cross-functional
+environments.
 
-\section{Education}
-\begin{itemize}
-\entry{Massachusetts Institute of Technology}{Mar 2022 - Sep 2024}{S.M. in Media Arts \& Sciences, MIT Media Lab}{Cambridge, MA}
-  {Thesis: \textit{Temporal Telepresence: Immersive Interfaces for TeleAbsence.} Advisors: Hiroshi Ishii, Pattie Maes.}
-\entry{Carnegie Mellon University}{}{M.F.A., Virtual Reality \& Robotics}{Pittsburgh, PA}
-  {Thesis: \textit{The Hidden Line Problem.} Advisors: Ivan Sutherland, Jessica Hodgins, Chris Atkeson.}
-\entry{Rutgers University}{}{B.A. in Cognitive Science, Visual Art}{New Brunswick, NJ}
-  {Cognitive science, visual art, and literature.}
-\end{itemize}
+\cvsection{Academic}
+\entry{Massachusetts Institute of Technology}{Cambridge, MA}{Masters of Media Arts \& Sciences, MIT Media Lab}{2024}
+\begin{bullets}\item Advisors: Pattie Maes, Hiroshi Ishii, Danielle Wood, Alan Lightman\end{bullets}
+\entry{Carnegie Mellon University}{Pittsburgh, PA}{Masters of Fine Arts, focusing on Virtual Reality \& Robotics, School of Fine Arts}{}
+\begin{bullets}\item Advisors: Jessica Hodgins, Chris Atkeson, Ivan Sutherland\end{bullets}
+\entry{Rutgers University}{New Brunswick, NJ}{Bachelor of Arts, Cognitive Science, Visual Art, Literature}{}
 
-\needspace{8\baselineskip}
-\section{Research \& Publications}
-\begin{itemize}
-\pub{Humanoids at Home: Autobiographical Semantic Maps for Humanoid Motion from Memory in a Reconstructed Domestic Environment.}{IROS'26 SeMaNa Workshop, \textbf{Best Workshop Paper Award}}
-  {Autobiographical semantic maps that drive humanoid motion from memory in a reconstructed home.}
-  {\textbf{D. Pillis}}
-\pub{Robot Cinematography: A Boston Dynamics Spot Quadruped as a Generative Virtual Production Camera Platform.}{In RSS'26}
-  {A quadruped robot as a mobile camera platform for generative virtual production.}
-  {\textbf{D. Pillis}}
-\pub{The Memory Machine: Immersive Reconstruction of Autobiographical Memory using Gaussian Splatting, World Models, and Interactive Agents.}{In ISMAR'26}
-  {Gaussian splatting, world models, and agents to reconstruct personal memory spaces.}
-  {\textbf{D. Pillis} et al.}
-\pub{Perceive More by Seeing Less: Immersive Vision Augmentation Systems to Support Vision Rehabilitation.}{In ISMAR'26}
-  {Real-time spatial-frequency filtering of mixed-reality passthrough (Varjo XR-3) for vision rehabilitation.}
-  {C. Pierce, \textbf{D. Pillis}, P. Sinha, J. Skerswetat, S. Riskin, K. Zolot}
-\pub{Multisensory Spatial Memory: A Large-Scale, Synchronized Multi-Sensory Dataset of Embodied Interaction with Reconstructed Autobiographical Spaces.}{CVPR'26 Sense of Space Workshop}
-  {A large-scale synchronized multisensory dataset of embodied interaction in reconstructed spaces.}
-  {\textbf{D. Pillis} et al.}
-\pub{Towards Performing Robotics: AI Theatre \& Social Robots for Theatrical Virtual Production.}{In ICSR + ART'26}
-  {Social robots and AI theatre integrated into live virtual production.}
-  {\textbf{D. Pillis}, T. Chiaravalloti, J. Ferguson}
-\pub{Towards Temporal Telepresence \& Multisensory Spatial Intelligence: Reconstructing the Human Experience through TeleAbsence.}{IEEE VR'26 Workshop on Memory}
-  {Multisensory spatial reconstruction as a path to telepresence across time.}
-  {\textbf{D. Pillis}}
-\pub{TeleAbsence: Visions of Afterlife Telepresence.}{Presence Journal, MIT Press, 2025}
-  {Telepresence with absent and departed loved ones through memory-driven interfaces.}
-  {H. Ishii, \textbf{D. Pillis}*, P. Pataranutaporn*, X. Xiao, A. Algargoosh, L. Li, J.-B. Labrune}
-\pub{Real-time Stable Diffusion for Virtual Production: Room-scale Generative AI towards the Ultimate Display.}{MIT GenAI for Design Workshop'25, \textbf{Best Presentation}}
-  {Room-scale, real-time Stable Diffusion on an LED volume via TouchDesigner and Disguise.}
-  {\textbf{D. Pillis}, P. Cerner, M. Sawtell}
-\pub{Return of the Jibo: Generative AI \& Social Robots for Virtual Production Education.}{MIT AI \& Education Conference'25}
-  {Generative AI-driven social robots as teaching tools for virtual production.}
-  {\textbf{D. Pillis}, J. Ferguson}
-\pub{AI Comes Out of the Closet: Using AI-Generated Virtual Characters to Help Individuals Practice LGBTQIA+ Advocacy.}{In IUI'24}
-  {LLM-driven, motion-captured virtual characters for practicing advocacy conversations.}
-  {\textbf{D. Pillis}*, P. Pataranutaporn*, P. Maes, M. Sra}
-\pub{AI Theatre: Interactive Conversational Interfaces with Virtual Agents Can Increase Confidence and Self-Efficacy in Devising Solutions for Interpersonal Conflict Scenarios.}{Under review}
-  {Conversational virtual agents increase confidence and self-efficacy in conflict resolution.}
-  {\textbf{D. Pillis}*, P. Pataranutaporn*, P. Maes, M. Sra}
-\pub{Human--Material Interaction for Expression, Performance, and Remembering.}{CHI'23 Workshop}
-  {Workshop on materials as interfaces for expression, performance, and memory.}
-  {H. Ishii, O. Kilic Afsar, W. Babatain, C. Fang, J. Forman, S. Nicita, \textbf{D. Pillis}, L. Yang, J.-B. Labrune}
-\end{itemize}
-{\small * Equal contribution}
+\cvsection{Publications}
+\cvsub{Journal Articles}
+\begin{pubs}
+\pub{J1} H. Ishii, \me*, P. Pataranutaporn*, X. Xiao, A. Algargoosh, L. Li, J.-B. Labrune. TeleAbsence: Visions of
+  Afterlife Telepresence. \textit{Presence Journal (MIT Press)}, 2025.
+\end{pubs}
+\cvsub{Conference \& Workshop Papers}
+\begin{pubs}
+\pub{C5} \me, J. Ferguson. Return of the Jibo: Generative AI \& Social Robots for Virtual Production Education.
+  \textit{MIT AI \& Education Conference}, Summer 2025.
+\pub{C4} \me, P. Cerner, M. Sawtell. Real-Time Stable Diffusion for Virtual Production: Room-Scale Generative AI
+  Towards the Ultimate Display. \textit{Generative AI for Design Workshop}, 2025. (Winner, Best Presentation)
+\pub{C3} \me. Towards Temporal Telepresence \& Multisensory Spatial Intelligence: Reconstructing the Human
+  Experience through TeleAbsence. \textit{IEEE VR, Workshop on Memory}, 2025.
+\pub{C2} \me*, P. Pataranutaporn*, P. Maes, M. Sra. AI Comes Out of the Closet: Using AI-Generated Virtual
+  Characters to Help Individuals Practice LGBTQIA+ Advocacy. \textit{ACM Conference on Intelligent User Interfaces
+  (IUI)}, 2024.
+\pub{C1} H. Ishii, O. Kilic Afsar, W. Babatain, C. Fang, J. Forman, S. Nicita, \me, L. Yang, J.-B. Labrune.
+  Human--Material Interaction for Expression, Performance, and Remembering. \textit{CHI 2023 Workshop on
+  Human--Material Interaction for Expression, Performance, and Remembering}, 2023.
+\end{pubs}
+\cvsub{Preprints \& Under Review}
+\begin{pubs}
+\pub{P2} C. Pierce, \me, P. Sinha, J. Skerswetat, S. Riskin, K. Zolot. Perceive More by Seeing Less: Immersive Vision
+  Augmentation Systems to Support Vision Rehabilitation. \textit{Manuscript submitted for publication}, 2025.
+\pub{P1} \me*, P. Pataranutaporn*, P. Maes, M. Sra. AI Theatre: Interactive Conversational Interfaces with Virtual
+  Agents Can Increase Confidence and Self-Efficacy in Devising Solutions for Interpersonal Conflict Scenarios.
+  \textit{Manuscript submitted for publication}, 2024.
+\end{pubs}
+\vspace{1pt}{\small\hfill * Equally contributing authors}
 
-\section{Skills}
-\begin{itemize}[itemsep=2pt]
-\item \textbf{Programming Languages:} Python, C/C++, C\#, HLSL, JavaScript, MEL
-\item \textbf{AI \& Graphics:} OpenAI API, Stable Diffusion, Gaussian Splatting / NeRF, USD, OpenGL, Three.js
-\item \textbf{Engines \& Tools:} Unreal, Unity, TouchDesigner, Disguise, Maya, Blender, ZBrush, Perforce
-\item \textbf{Hardware:} Boston Dynamics Spot, Varjo XR-3, Apple Vision Pro, Quest 1--3, HoloLens, Magic Leap, Meta Project Aria, Azure Kinect, Qualisys / Motive mocap, Arduino, EEG
-\end{itemize}
+\cvsection{Academic Experience}
+\entry{Emerson College}{Boston, MA}{Visiting Assistant Professor of Virtual Production}{2024 -- Present}
+\begin{bullets}
+\item Pioneering research in next-generation virtual production, leveraging a state-of-the-art 2240 $\times$ 1440, 1.9mm-pitch LED volume to push the boundaries of real-time, cinematic immersive media
+\item Lead developer of large-scale, interactive immersive environments across Boston and Los Angeles campuses
+\item Publishing research at the intersection of generative media, immersive environments, and human/AI interaction, advancing new paradigms for AI-driven storytelling and spatial computing
+\item Mentor and instructor for graduate and undergraduate students, establishing industry-leading best practices in virtual production, AI-assisted filmmaking, and real-time workflows
+\item Building high-fidelity, experimental interactive systems and research prototypes in Unreal Engine and Unity, focused on real-time rendering, immersive interaction, and advanced virtual production pipelines
+\item Classes taught: AI Filmmaking, Topics in Virtual Production
+\end{bullets}
 
-\section{Services}
-\begin{itemize}[itemsep=2pt]
-\item \textbf{Committee:} ACM SIGGRAPH Diversity \& Inclusion Committee (2018--2025)
-\item \textbf{Teaching:} AI Filmmaking, Virtual Production (Emerson); MAS.834 Tangible Interfaces, MAS.S61 Metaverse (MIT); Engineering Transformations (Princeton); UH 3004 Immersive Virtual Environments (Virginia Tech)
-\item \textbf{Invited Talks:}
-  \begin{itemize}[label={\small$\circ$},itemsep=1pt,topsep=1pt]
-  \item (2025) IEEE VR, St Malo, France
-  \item (2025) HubSpot: ``AI Comes Out of the Closet''
-  \item (2025) SIGGRAPH Sparks Talk; MIT AI Film Hackathon panel with Alvin Wang Graylin
-  \item (2024) SIGGRAPH Village Talks; MIT Media Lab
-  \item (2023) SIGGRAPH, Los Angeles; Harvard AR/VR Hackathon
-  \item (2017) IROS Workshop: ``Towards an Artist in the Lab Framework''
-  \end{itemize}
-\end{itemize}
+\entry{Massachusetts Institute of Technology, MIT Media Lab}{Cambridge, MA}{Research Associate}{2022 -- 2024}
+\begin{bullets}
+\item Designed, fabricated, and programmed advanced pneumatic and mixed-material tangible interfaces, combining custom PCBs, soft-robotic actuation, and embedded microcontrollers (Arduino, FlowIO), evaluated through human-subject user studies
+\item Engineered AR/VR simulations, digital-twin pipelines, and Gaussian splatting / photogrammetry workflows for high-fidelity interactive spatial media, enabling novel memory-support and autobiographical interfaces
+\item Published peer-reviewed research in top-tier international venues, including ACM IUI, ACM CHI, and IEEE VR, with a second-author journal publication in MIT Presence Journal
+\item Co-led the TeleAbsence research initiative under the supervision of Hiroshi Ishii, overseeing \$40K+ in research funding and delivering dozens of successful industry-facing demos and installations
+\item Captured and processed hundreds of personal objects and heirlooms via high-resolution 3D scanning, constructing a large-scale multimodal dataset to support memory-driven and autobiographical AI model development
+\item Conceived and delivered public-facing outreach exhibitions, XR installations, and collaborative research projects spanning Tangible Media Group, Fluid Interfaces, City Science, and DesignX
+\item Classes taught: MAS.834: Tangible User Interfaces with Dr. Hiroshi Ishii; MAS.S61: Metaverse with Dr. Joseph Paradiso, Hiroshi Ishii \& Valentin Heun; MAS.S67: Design for the Future with Dr. Danielle Wood
+\end{bullets}
+
+\entry{Academy Software Foundation}{}{Graduate Intern}{2023}
+\mentor{Supervisor: Wan Chun Alex Ma}
+\begin{bullets}
+\item Led a research project overseen by researchers from Industrial Light \& Magic and Meta, showcasing emerging applications of generative AI in virtual production
+\item Built a browser-based, motion-capture--driven simulation using JavaScript, Three.js, and WebSockets, integrating GPT-3--based narrative generation with parameterizable real-time mocap behaviors
+\item Published peer-reviewed outcomes at the ACM Intelligent User Interfaces Conference
+\end{bullets}
+
+\entry{MIT DesignX}{Cambridge, MA}{Startup Founder, SoftDesk}{2022}
+\begin{bullets}
+\item Founded and led SoftDesk, a sensory-computing startup developing tangible, multisensory interfaces through soft robotics, pneumatic actuation, and embedded sensing
+\item Secured \$10K in competitive seed funding and led a four-person interdisciplinary team from Harvard GSD, driving product--market fit, rapid prototyping sprints, and milestone-based execution
+\item Delivered investor-facing demos and pitch decks to audiences of hundreds of venture capitalists, clearly articulating technical architecture, IP strategy, and market opportunities
+\end{bullets}
+
+\entry{Princeton University}{Princeton, NJ}{Associate Professional Specialist / Visiting Instructor}{2020 -- 2021}
+\begin{bullets}
+\item Developed VR-centric curricula for remote art and technology courses, covering creative coding, 3D animation, robotics programming, and VR/AR/MR pipelines (Unity, C\#, shaders)
+\item Built a networked Unity simulation of the Princeton Art Museum for Zoom-based instruction, enabling remote students to co-inhabit and annotate shared 3D spaces in real time
+\item Prepared and managed course technology infrastructure, including custom Immersive Media Kits and Unity-ready mini-PCs for advanced real-time development
+\item Classes taught: THR STC 210: Storytelling with Technology; STC 209: Engineering Transformations
+\end{bullets}
+
+\entry{Virginia Tech}{Blacksburg, VA}{Research Assistant Professor in Immersive Environments}{2018 -- 2020}
+\begin{bullets}
+\item Grant-funded researcher and creative technologist, leading cross-disciplinary collaborations across art, engineering, and the sciences
+\item Project lead for ``The Cube,'' a \$15M, one-of-a-kind immersive VR research facility, featuring 150 spatial audio channels, 32 Qualisys motion-capture cameras, and 360\textdegree{} projection environments
+\item VR/AR hardware specialist and technical consultant, supporting Oculus/Quest, HTC Vive, and HoloLens, alongside immersive video and projection-mapping workflows
+\item Designed and taught Honors-level Unity courses, integrating animation, motion capture, procedural generation, and immersive storytelling for both art and STEM contexts
+\item Classes taught: UH 3004: Immersive Virtual Environments for Art, Data, and Research
+\end{bullets}
+
+\entry{ACM SIGGRAPH International Conference}{}{SIGGRAPH Diversity \& Inclusivity Committee}{2018 -- 2025}
+\begin{bullets}
+\item Collaborated with industry peers to advance diversity, equity, and inclusion across computer graphics and interactive technology communities
+\item Planned and led panels, presentations, and conference programming addressing gender theory, critical race theory, queer studies, intersectionality, disability studies, and related frameworks
+\item Hosted and contributed to annual Diversity \& Inclusion Summits, fostering actionable dialogue and best practices for inclusive cultures in XR, VR, animation, interactive graphics, and CGI industries
+\end{bullets}
+
+\entry{Gujarat Science Center}{Ahmedabad, India}{Robotics Education Consultant}{2018}
+
+\entry{University of Maine, Innovation Media Research Center}{Orono, ME}{Researcher-in-Residence}{2018}
+\begin{bullets}
+\item Demonstrated interactive robotics and AI systems, including SoftBank NAO--based installations, in an Artificial Intelligence and Art course co-taught with Sofian Audry
+\item Developed ARKit-based iOS prototypes in Unity and delivered hands-on instruction in augmented reality development
+\item Advised graduate students and consulted on the design and development of a Virtual Reality Lab, supporting research and curriculum planning
+\end{bullets}
+
+\entry{Carnegie Mellon University, School of Computer Science}{Pittsburgh, PA}{Research Associate, The Robotics Institute}{2016 -- 2018}
+\begin{bullets}
+\item Visiting Researcher in Christopher Atkeson's soft robotics laboratory
+\item Developed interactive robotics--VR systems using historic robot primitives, enabling users to design and simulate custom robotic behaviors in virtual reality
+\item Cataloged, digitized, and contextualized a historic robotics collection, designing a taxonomy and framework to generate a structured 3D dataset
+\item Produced high-quality instructional videos and animations on robotics concepts and programming for K--12 and university outreach, broadening participation in robotics and computer science
+\item Accepted proposal to present an overview of this work at IROS Robotics Conference, Vancouver, BC
+\end{bullets}
+
+\entry{Carnegie Mellon University, Posner Center Rare Book Collection}{Pittsburgh, PA}{Curatorial Fellow}{2015 -- 2016}
+\begin{bullets}
+\item Collaborated with pioneering computer scientist Ivan Sutherland to document the invention of the first virtual reality headset, designing and implementing an interactive VR application
+\item Conducted interdisciplinary research spanning computer science, computer graphics, and automata, bridging theory and interactive systems
+\item Curated a large-scale public exhibit integrating rare books, robotics artifacts, and an embedded interactive VR experience; oversaw visual design, printed materials, and exhibition documentation
+\item Coordinated invited lectures by Marc Raibert (Boston Dynamics) and Ivan Sutherland, jointly hosted by the School of Art and the Robotics Institute
+\end{bullets}
+
+\entry{Carnegie Mellon University, School of Art / School of Computer Science}{Pittsburgh, PA}{Graduate Research Assistant}{2013 -- 2016}
+\begin{bullets}
+\item Developed and deployed emerging-technology workflows to support faculty in teaching animation and advanced digital production
+\item Instructed students in motion-capture pipelines, including capture, rigging, and retargeting of performance data
+\item Taught core animation and production workflows, spanning storyboarding, video editing, 3D modeling, and animation in Maya, Blender, and ZBrush
+\item Supported student mastery of advanced techniques, including cloth simulation, render layering, character rigging, and physically based smoke, fire, and dynamics simulations
+\end{bullets}
+
+\cvsection{Professional Experience}
+\yitem{\textbf{Federico Solmi Studio}, Virtual Reality Developer, New York, NY}{2017 -- 2018}
+\yitem{\textbf{Artsy}, Virtual Reality Consultant, New York, NY}{2016}
+\yitem{\textbf{The Wooster Group}, Theatre Assistant Technician, Performing Garage, New York, NY}{2016}
+\yitem{\textbf{Skowhegan Residency}, Artist's Assistant, Maine}{2014}
+\yitem{\textbf{Elizabeth Dee Gallery}, Digital Archivist, New York, NY}{2011 -- 2013}
+
+\cvsection{Teaching}
+\yitem{Virtual Production, \textbf{Emerson College}}{2024 -- 2025}
+\yitem{AI Filmmaking, \textbf{Emerson College}}{2024 -- 2025}
+\yitem{Tangible Interfaces, Fall 2023, Graduate Assistant, \textbf{Massachusetts Institute of Technology, Media Lab}, Cambridge, MA}{2023}
+\yitem{MAS.S61: The Metaverse: What, How, Why, and When, Spring 2023, Graduate Assistant, \textbf{Massachusetts Institute of Technology, Media Lab}, Cambridge, MA}{2023}
+\yitem{Transformations in Engineering \& the Arts, Spring 2021, \textbf{Princeton University}, Princeton, NJ}{2021}
+\yitem{Technology \& Storytelling for Performance, Teaching Assistant, Fall 2020, \textbf{Princeton University}, Princeton, NJ}{2020}
+\yitem{UH 3004: Immersive Virtual Environments for Art, Data, and Research, \textbf{Virginia Tech, Honors College}, Blacksburg, VA}{2019}
+\yitem{Animation, Art \& Technology, Spring 2016, Teaching Assistant, Dr. Jessica Hodgins \& James Duesing, \textbf{Carnegie Mellon University}, Pittsburgh, PA}{2016}
+\yitem{Technical Character Animation, Fall 2015, Teaching Assistant, Assistant Prof. Spencer Diaz, \textbf{Carnegie Mellon University}, Pittsburgh, PA}{2015}
+\yitem{Experimental Animation, Spring 2014, Teaching Assistant, Professor Jessica Hodgins (C.S.), Professor James Duesing (Art), \textbf{Carnegie Mellon University}, Pittsburgh, PA}{2014}
+\yitem{Foundations Concept Studio; Space and Time, Fall 2014, Teaching Assistant, Visiting Prof. Jonathan Armistead, \textbf{Carnegie Mellon University}, Pittsburgh, PA}{2014}
+\yitem{Electronic Media Studio: Animation \& Video, Spring 2014, Teaching Assistant, Prof. Paolo Pederecini, \textbf{Carnegie Mellon University}, Pittsburgh, PA}{2013}
+
+\cvsection{Presentations and Exhibitions}
+\cvsub{Talks}
+\yitem{Invited Speaker, AI Comes out of the Closet, \textbf{Hubspot}}{2025}
+\yitem{Invited Speaker, \textbf{Mark Billingshurst}}{2025}
+\yitem{Invited Speaker, \textbf{IEEE VR}, St Malo, France}{2025}
+\yitem{Invited Speaker, \textbf{HarvardXR}}{2025}
+\yitem{Invited Speaker, Panel with Alvin Wang Graylin, \textbf{MIT AI Film Hackathon}}{2025}
+\yitem{Invited Speaker, \textbf{SIGGRAPH Sparks Talk}}{2025}
+\yitem{Invited Speaker, \textbf{SIGGRAPH Village Talks}}{2024}
+\yitem{Invited Speaker, \textbf{MIT Media Lab}, Dr. Danielle Wood}{2024}
+\yitem{Invited Speaker, \textbf{SIGGRAPH International Conference}, Los Angeles, CA}{2023}
+\yitem{Invited Speaker, \textbf{AR/VR Hackathon, Harvard University}, Cambridge, MA}{2023}
+\yitem{Conference on Adaptive Technology, \textbf{Digital IDEAS Summer Institute, University of Michigan}, Ann Arbor, MI}{2022}
+\yitem{Invited Speaker, DEI Panel Discussion, \textbf{High-Performance Graphics Conference}}{2021}
+\yitem{Diversity, Equity \& Inclusion Volunteer, \textbf{SIGGRAPH 2021}}{2021}
+\yitem{SIGGRAPH LGBTQ+ Meetup, Augmented Reality Drag Show using AR via Zoom, \textbf{ACM SIGGRAPH International Conference}}{2021}
+\yitem{Invited Speaker, IDEA: Inclusion, Diversity, Equity, and Accessibility, \textbf{Princeton ResInDe Virtual Conference, Princeton University}}{2021}
+\yitem{Animation collaboration with musician Bora Yoon, \textbf{Living at the Intersection Symposium, Princeton University}}{2020}
+\yitem{Visiting Lecture, Summer Course, \textbf{UCLA Digital Media Arts} (invited by Miles Peyton)}{2019}
+\yitem{Visiting Lecture, Imitation of Life, Virtual Reality Workshop, \textbf{Cooper Union}, New York, NY (invited by Joao Enxuto)}{2019}
+\yitem{Invited Lecture, Gender Representation in Computer Graphics, \textbf{SIGGRAPH Asia}, Brisbane, Australia}{2019}
+\yitem{Panel member \& organizer, Rendering Gender, with Jacob Gaboury \& Bo Ruberg, \textbf{SIGGRAPH Conference}, Los Angeles, CA}{2019}
+\yitem{Organizer, Diversity and Inclusion Summit, \textbf{SIGGRAPH Conference}, Vancouver, BC}{2018}
+\yitem{Invited Lecture, Robotics and the History of the Humanoid, \textbf{University of Maine IMRC}, Orono, MN}{2018}
+\yitem{Invited Lecture, Introduction to Augmented Reality using ARKit, Workshop, \textbf{University of Maine IMRC}, Orono, MN}{2018}
+\yitem{Visiting Lecturer, Artificial Intelligence and Art, with Prof. Sofian Audry, \textbf{University of Maine IMRC}, Orono, MN}{2018}
+\yitem{Invited Lecture, Towards an Artist in the Lab Framework, Workshop, \textbf{iRos Robotics Conference}, Vancouver, BC}{2017}
+\yitem{Science Educator, with Dr. Chris Atkeson, \textbf{Robotics Institute, Carnegie Mellon University}, Pittsburgh, PA}{2017}
+\yitem{Visiting Lecturer, Figure Drawing for Humanoid Robots, \textbf{Columbia University School of the Arts}, New York, NY}{2017}
+\yitem{Visiting Critic, Physical Computing, \textbf{Carnegie Mellon University}, Pittsburgh, PA}{2017}
+\yitem{Visiting Critic, Senior Studio, \textbf{Carnegie Mellon University}, Pittsburgh, PA}{2016}
+\yitem{Visiting Lecturer, Six X Eight Artist Lecture Series, \textbf{Silver Eye Center for Photography}, Pittsburgh, PA}{2016}
+\yitem{Committee Member, Public Arts Project Selection, \textbf{Open Engagement}, Pittsburgh, PA}{2015}
+\yitem{Undergraduate Review Committee, \textbf{Carnegie Mellon University}}{2015}
+
+\cvsub{Exhibitions}
+\yitem{Three Body Problem, curated by Ashik Zaman and Daniel Pillis, \textbf{Harvard Conflux, Stora Galleriet}, March 20 -- April 12}{2025}
+\yitem{MIT After Dark, Vision Simulations, with Cayden Pierce, \textbf{MIT Museum}}{2025}
+\yitem{Design for the Future, \textbf{MIT Media Lab}, Massachusetts Institute of Technology, Cambridge, MA}{2023}
+\yitem{Media Lab Gender Bender, \textbf{MIT Media Lab}, Massachusetts Institute of Technology, Cambridge, MA}{2023}
+\yitem{Virtual Princeton Art Museum Exhibit, online virtual experience of \textbf{Princeton University Art Collections}}{2020}
+\yitem{Federico Solmi: The Bacchanalian Ones, \textbf{Rowan University}, NJ (Freelance VR Developer)}{2020}
+\yitem{Boo Box: VR installation, \textbf{New Orleans Film Festival, Cinema Reset VR Exhibit}, curated by Rachel Lin Weaver, New Orleans, LA}{2019}
+\yitem{New \& Improved, Group Exhibit curated by Sophie Sobers, \textbf{Index Art Center}, Newark, NJ}{2019}
+\yitem{Dancing Plants, Science Festival, \textbf{The Institute for Creativity, Art, and Technology, Virginia Tech}, Blacksburg, VA}{2019}
+\yitem{Visual Language of Chromatin Architecture, ICAT Day, \textbf{The Institute for Creativity, Art, and Technology, Virginia Tech}, Blacksburg, VA}{2019}
+\yitem{Curator, Open at the Source, Exhibit on the intersection between Art \& Science, \textbf{The Institute for Creativity, Art, and Technology, Virginia Tech}, Blacksburg, VA}{2019}
+\yitem{History of Computer Graphics, Interactive Animation, \textbf{SIGGRAPH Art Gallery}, Vancouver, Canada}{2018}
+\yitem{The Blue Plate, \textbf{University of Mary Washington}, Fredericksburg, VA}{2018}
+\yitem{Mainframe, \textbf{Mint Museum}, Charlotte, NC}{2018}
+\yitem{Robot Museum, \textbf{Interstate Projects}, Brooklyn, NY}{2017}
+\yitem{Et Tu, Art Brute?, \textbf{Andrew Edlin Gallery}, New York, NY}{2017}
+\yitem{Grandmother's House, \textbf{Space Gallery}, Pittsburgh, PA}{2016}
+\yitem{Virtual Newell/Simon Simulation, \textbf{Miller Gallery, Carnegie Mellon MFA Thesis Show}, Pittsburgh, PA}{2016}
+\yitem{Ivan Sutherland's Trojan Cockroach, \textbf{Posner Center, Carnegie Mellon}, Pittsburgh, PA}{2016}
+\yitem{Grandmother's House, \textbf{Little Berlin}, Philadelphia, PA}{2015}
+\yitem{An Evening with Cara Benedetto, Performance, \textbf{Museum of Contemporary Art}, Cleveland, OH}{2015}
+\yitem{The Blue Plate: History of Computer Graphics, \textbf{Carnegie Mellon University}, Pittsburgh, PA}{2015}
+\yitem{Intergalactic Immigration Office, curated by Jen Delos Reyes, \textbf{Open Engagement 2015}, Pittsburgh, PA}{2015}
+\yitem{Andy Warhola's Living Room, \textbf{The Warhol Museum}, Pittsburgh, PA}{2014}
+\yitem{City of Lost Men, \textbf{Kresge Theatre, Carnegie Mellon University}, Pittsburgh, PA}{2014}
+\yitem{Grandmothers House, \textbf{4022 Woolslayer Way}, Pittsburgh, PA}{2013}
+\yitem{Digital Archive 2011--2013, curated by Rebecca Jampol, \textbf{Newark Penn Station}, Newark, NJ}{2013}
+\yitem{Queer Profiles in Courage, curated by Christopher Mitchell, \textbf{Leslie/Lohman Museum of Gay \& Lesbian Art}, NY, NY}{2012}
+\yitem{Mix23 NYC Experimental LGBTQ Film Festival, \textbf{Theatre for the New City}, NY, NY}{2010}
+\yitem{Last Days of the Iron Maiden, \textbf{Gallery Aferro}, Newark, NJ}{2009}
+\yitem{Mason Gross BFA, \textbf{Rutgers University}, New Brunswick, NJ}{2009}
+\yitem{One City, \textbf{Jajo Gallery}, Newark, NJ}{2009}
+\yitem{Multiformity: The Art of Disease, curated by Deana Haggag, \textbf{Jajo Gallery}, Newark, NJ}{2009}
+
+\cvsub{Residencies}
+\yitem{\textbf{Media Archaeology Lab}, the University of Colorado at Boulder (forthcoming)}{2021}
+\yitem{\textbf{University of Maine, Innovative Media, Research and Commercialization Center}, Researcher in Residence, Orono, ME}{2018}
+\yitem{\textbf{Interstate Projects}, Brooklyn, NYC, NY}{2017}
+\yitem{\textbf{The Robotics Institute, Carnegie Mellon University}, Pittsburgh, PA}{2016}
+
+\cvsection{Technical Skills}
+\pitem{\textbf{Software:} Unity, Unreal, Blender, Maya, ZBrush, Autodesk Software, Adobe Suite, Azure Kinect}
+\pitem{\textbf{Hardware:} Oculus Quest 1--3, HoloLens, Magic Leap, Leap Motion, Arduino, Raspberry Pi, EEG, Computer Vision}
+\pitem{\textbf{General Skills:} C\#, Python, Ubuntu, Windows 11, Mac OS, Networking, 3D Printing, HTC Vive, Microcomputers, Motion Capture, Project Planning, Asset Management}
+
+\cvsection{Honors and Awards}
+\yitem{\textbf{Best Presentation}, Generative AI for Design Workshop, MIT}{2025}
+\yitem{\textbf{MIT Seed Fund}, \textbf{\$40K} award for TeleAbsence}{2024}
+\yitem{\textbf{ICAT Major SEAD Grant}, Dancing Plants, Virginia Tech}{2018}
+\yitem{\textbf{ICAT SEAD Grant}, Visual Language of Chromatin Architecture, Virginia Tech}{2018}
+\yitem{Steelcase Education Grant, Virginia Tech}{2018}
+\yitem{Innovation with Impact, Graduate Research Grant, Carnegie Mellon University}{2016}
+\yitem{Rembacher Chamber Music Award, Carnegie Mellon University}{2016}
+\yitem{Studio for Creative Inquiry Grant, Carnegie Mellon University}{2015}
+\yitem{Full Tuition Merit Based Scholarship, Carnegie Mellon University}{2015}
+\yitem{Public Art Scholarship, Rutgers University}{2014}
+
+\cvsection{Select Media Coverage}
+\yitem{Berkeley Beacon, ``How Emerson is---and isn't---using artificial intelligence in the classroom,'' by Y. Toby}{2025}
+\yitem{MIT News, ```AI comes out of the closet' seeks to merge AI and LGBTQIA+ advocacy in a way as innovative as it is necessary,'' by David Sweeney}{2024}
+\yitem{MIT News, ``Communicating Across Time,'' by Ken Schulman}{2022}
+\yitem{Pittsburgh City Paper, ``CMU launches Project showcasing the History of Robotics at the University,'' by Lauryn Nania}{2021}
+\yitem{NEXTPittsburgh, ``Robotics Project traces the roots of today's robots to CMU,'' by Michael Machosky}{2021}
+\yitem{Ground Truth, ``Carnegie Mellon University Launches The Robotics Project to Preserve and Promote the Field's Legacy,'' by GT Staff}{2021}
+\yitem{TribLive, ``Carnegie Mellon's Robotics Project aims to preserve History of Robotics with large-scale Archive,'' by Julia Felton}{2021}
+\yitem{Pittsburgh Post Gazette, ``From trading cards to `cannibilized' robotic parts, CMU embarks on a mission to archive the Robotics Field,'' by Lauren Rosenblatt}{2021}
+\yitem{Virginia Tech News, ``The Sound of Plants Dancing,'' by Max Esterhuizen}{2020}
+\yitem{The Virginian Pilot, ``Virginia researchers are studying `the sound of plants dancing' to better the future of agriculture,'' by Katherine Hafner}{2020}
+\yitem{Virginia Tech, Winter Course Feature}{2020}
+\yitem{Vice, Creators Project, ``An Artist built an exact replica of Artificial Intelligence's Birthplace,'' by Sean Neumann}{2017}
+\yitem{Digital Trends, ``Artist re-creates the birthplace of Artificial Intelligence,'' by Dyllan Furness}{2017}
+\yitem{Atlas Obscura, ``Where Should Robots Go When They Retire?,'' by Sarah Laskow}{2016}
+\yitem{iProgrammer, ``Sutherland's Trojan Cockroach On Show,'' by David Conrad}{2016}
+\yitem{Pittsburgh City Paper, ``The Year in Visual Art,'' by Robert Raczka}{2015}
+\yitem{The Warhol Blog, ``Andy Warhola's Living Room''}{2014}
+\yitem{Pittsburgh Post Gazette, ``Grandma's belongings live as art installation in Lawrenceville,'' by Donna Nelson-Jones}{2014}
+
+\cvsection{Service}
+\cvsub{Mentoring}
+\yitem{\textbf{Harvard Graduate School of Design Conflux Residency Program}, Mentor}{2024 -- Present}
+\yitem{\textbf{Out in Tech}, Mentor}{2024}
+\yitem{\textbf{MIT Reality Hack}, Mentor}{2023}
+\yitem{\textbf{MIT MAS SOS}, mentored a total of 4 students from underrepresented groups in preparing their graduate applications to MIT}{Fall 2023}
+\yitem{\textbf{Out in Tech Mentorship}, mentored 2 undergraduate students in 2020, 1 in 2021, and 1 in 2022, including discussing preparation for graduate school and the tradeoffs between academic and industry careers}{2022 -- 2024}
+\cvsub{Advising}
+\pitem{Minyu Chen, Emerson College Thesis Committee}
+\pitem{Nikita Shokhov, Mixed Reality Independent Study, with Aisling Kelliher, Masters in Creative Technologies, School of Visual Arts, Virginia Tech}
+\pitem{Mark Manual, Master's Thesis, Department of Computer Science, Virginia Tech}
+\pitem{Yao Xiao, Advisor, Department of Computer Science, Master of Science, Virginia Tech}
+\cvsub{Professional Affiliations}
+\pitem{Special Interest Group on Computer Graphics and Interactive Techniques, SIGGRAPH}
+\pitem{Association for Computing Machinery}
 
 \end{document}
